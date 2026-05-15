@@ -1,0 +1,60 @@
+// C++ code
+//
+int pote1 = 0;
+
+int potetempo = 0;
+
+int led1 = 0;
+
+int led2 = 0;
+
+int led3 = 0;
+
+int botao1 = 0;
+
+void setup()
+{
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(7, INPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+}
+
+void loop()
+{
+  pote1 = analogRead(A1);
+  potetempo = map(analogRead(A2), 0, 1023, 1, 10);
+  botao1 = digitalRead(7);
+  digitalWrite(11, HIGH);
+  if (botao1 == 1) {
+    Serial.println("ligar");
+    digitalWrite(11, LOW);
+    digitalWrite(9, HIGH);
+    delay(1000 * potetempo); // Wait for 1000 * potetempo millisecond(s)
+    digitalWrite(9, LOW);
+    digitalWrite(10, HIGH);
+    delay(1000 * potetempo); // Wait for 1000 * potetempo millisecond(s)
+  }
+
+  pote1 = analogRead(A1);
+  if (pote1 > 255) {
+    digitalWrite(3, HIGH);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+  }
+  if (pote1 > 255 && pote1 < 700) {
+    digitalWrite(3, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(6, HIGH);
+  }
+  if (pote1 > 700 && pote1 < 1023) {
+    digitalWrite(3, LOW);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+  }
