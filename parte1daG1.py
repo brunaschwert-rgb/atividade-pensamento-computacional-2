@@ -53,4 +53,4 @@ O segundo quando é para classificar a intencidade por exemplo :
 tipo led 1 liga (baixa)
 led 2 liga (média)
 led 3 liga (alto)
-E é claro que não poderá falta os tempos atual, tempo inicial , e tempo final
+E é claro que não poderá falta os tempos atual, tempo inicial , e tempo final  
